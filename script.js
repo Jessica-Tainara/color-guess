@@ -1,6 +1,11 @@
-const reiniciar = document.getElementById('reset-game')
+if (localStorage.length === 0) {
+  localStorage.setItem('count', 0);
+}
+const reiniciar = document.getElementById('reset-game');
 const cores = [];
 const container = document.getElementById('container');
+const placar = document.getElementById('score');
+placar.innerText = localStorage.count;
 function createCircles() {
   let cor;
   for (let i = 1; i <= 6; i += 1) {
@@ -30,12 +35,14 @@ function seleciona(event) {
   const answer = document.getElementById('answer');
   if (rgb === text) {
     answer.innerText = 'Acertou!';
+    localStorage.count = parseInt(localStorage.count) + 3;
+    placar.innerText = localStorage.count;
   } else {
     answer.innerText = 'Errou! Tente novamente!';
   }
 }
 function recarrega() {
-  document.location.reload()
+  document.location.reload();
 }
 reiniciar.addEventListener('click', recarrega);
 container.addEventListener('click', seleciona);
