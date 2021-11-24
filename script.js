@@ -1,3 +1,4 @@
+const reiniciar = document.getElementById('reset-game')
 const cores = [];
 const container = document.getElementById('container');
 function createCircles() {
@@ -33,4 +34,8 @@ function seleciona(event) {
     answer.innerText = 'Errou! Tente novamente!';
   }
 }
+function recarrega() {
+  document.location.reload()
+}
+reiniciar.addEventListener('click', recarrega);
 container.addEventListener('click', seleciona);
