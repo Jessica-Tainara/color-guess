@@ -1,4 +1,4 @@
-if (localStorage.length === 0) {
+if (localStorage.count === undefined) {
   localStorage.setItem('count', 0);
 }
 const reiniciar = document.getElementById('reset-game');
