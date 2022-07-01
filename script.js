@@ -11,9 +11,15 @@ function createCircles() {
   for (let i = 1; i <= 6; i += 1) {
     const circle = document.createElement('div');
     circle.className = 'ball';
-    cor = '(' + parseInt(Math.random() * 255) + ', ' + parseInt(Math.random() * 255) + ', ' + parseInt(Math.random() * 255) + ')';
+    cor = `(${parseInt(
+      Math.random() * 255, 10,
+    )}, ${parseInt(
+      Math.random() * 255, 10,
+    )}, ${parseInt(
+      Math.random() * 255, 10,
+    )})`;
     cores.push(cor);
-    circle.setAttribute('style', 'background-color:' + 'rgb' + cor);
+    circle.setAttribute('style', `${'background-color: rgb'}${cor}`);
     container.appendChild(circle);
   }
 }
@@ -31,11 +37,11 @@ colorgues();
 function seleciona(event) {
   const selecionado = event.target;
   const rgb = selecionado.style.backgroundColor;
-  const text = 'rgb' + document.getElementById('rgb-color').innerText;
+  const text = `rgb${document.getElementById('rgb-color').innerText}`;
   const answer = document.getElementById('answer');
   if (rgb === text) {
     answer.innerText = 'Acertou!';
-    localStorage.count = parseInt(localStorage.count) + 3;
+    localStorage.count = parseInt(localStorage.count, 10) + 3;
     placar.innerText = localStorage.count;
   } else {
     answer.innerText = 'Errou! Tente novamente!';
